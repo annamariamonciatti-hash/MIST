@@ -64,10 +64,7 @@ def run_block(win, thisExp, globalClock, stress=False, duration=600):
 
         difficulty, diffLevel, cor, err = update_difficulty(diffLevel, cor, err, stress)
 
-        if stress:
-            difficulty, diffLevel, cor, err = update_difficulty(
-                diffLevel, cor, err, stress
-            )
+
 
         # ===== TIMESTAMP =====
         unix_time = time.time()
