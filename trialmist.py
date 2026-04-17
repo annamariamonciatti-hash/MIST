@@ -24,7 +24,8 @@ def run_trial(win, equation, stress, usrAvg):
     # ===== TESTO =====
     feedback_text = TextStim(
         win,
-        text="Per favore rimani nella zona verde",
+        text="Per favore rimani nella zona verde", #it social pressure bar instruction
+              #"Please stay in the green zone #eng social pressure bar instructions
         pos=(0, 0.55),
         height=0.05,
     )
@@ -99,7 +100,7 @@ def run_trial(win, equation, stress, usrAvg):
             lab.draw()
 
         if stress:
-            # barra sociale
+            # barra sociale #social evaluation bar
             bar_red.draw()
             bar_yellow.draw()
             bar_green.draw()
@@ -109,7 +110,7 @@ def run_trial(win, equation, stress, usrAvg):
             user_pointer.draw()
             avg_pointer.draw()
 
-            # barra tempo sopra tutto
+            # barra tempo sopra tutto #timeout bar
             bar_bg.draw()
             bar_fill.draw()
 
