@@ -34,7 +34,7 @@ def run_block(win, thisExp, globalClock, stress=False, duration=600):
     usrAvg = 0.5
     trialN = 0
 
-    phase = "stress" if stress else "control"
+    phase = "stress" if stress else "cognitive"
 
     while clock.getTime() < duration:
 
@@ -76,7 +76,7 @@ def run_block(win, thisExp, globalClock, stress=False, duration=600):
         # ===== SALVATAGGIO DATI =====
         thisExp.addData("trial", trialN)
         thisExp.addData("phase", phase)
-        thisExp.addData("event", "trial")  # 👈 aggiunta
+        thisExp.addData("event", "trial")  
         thisExp.addData("equation", eq)
         thisExp.addData("response", result["resp"])
         thisExp.addData("correct", correct)
@@ -118,7 +118,8 @@ def main():
     # =========================
     show_text(
         win,
-        "La procedura sperimentale sta per cominciare.\n\nPremi la barra spaziatrice per continuare.",
+        "La procedura sperimentale sta per cominciare.\n\nPremi la barra spaziatrice per continuare.", #it instructions
+        # The experimental procedure is about to begin. \n\n Press the space bar to continue" eng instructions
     )
 
     # =========================
@@ -133,8 +134,9 @@ def main():
     # BASELINE
     show_text_timed(
         win,
-        "Ti chiediamo di rilassarti per 5 minuti.\n\n\nAvvisa il ricercatore alla fine.",
-        300,
+        "Ti chiediamo di rilassarti per 5 minuti.\n\n\n Avvisa il ricercatore alla fine.", #it instructions
+        # "We ask you to relax for 5 minutes. \n\n\n\ Please notify the researcher at the end." #eng instructions
+        300, #change to change the duration of the rest phase
     )
 
     # =========================
@@ -147,17 +149,19 @@ def main():
     thisExp.nextEntry()
 
     # =========================
-    # CONTROL INTRO
+    # COGNITIVE PHASE INTRO
     # =========================
     show_text(
         win,
-        "Ora inizierai le operazioni matematiche.\n\nPremi la barra spaziatrice per iniziare.",
+        "Ora inizierai le operazioni matematiche. \n\n Digita la cifra che rappresenta il risultato dell'operazione.\n\nPremi la barra spaziatrice per iniziare.", #it phase strart
+     #  “You will now begin the mathematical operations.\n\n\nType the digit that represents the result of the operation.\n\n\nPress the space bar to start.” , eng phase start
+
     )
 
     # =========================
-    # CONTROL
+    # COGNITIVE PHASE
     # =========================
-    run_block(win, thisExp, globalClock, stress=False, duration=600)
+    run_block(win, thisExp, globalClock, stress=False, duration=600) #change to change duration of the cognitive phase
 
     # =========================
     # STRESS INTRO
@@ -170,18 +174,29 @@ def main():
         "Per garantire risultati ottimali, è importante che tu ti esprima a un livello "
         "paragonabile a quello dei tuoi pari (indicato dalla freccia rossa).\n\n"
         "Buona fortuna!\n\n"
-        "Premi la barra spaziatrice per iniziare.",
+        "Premi la barra spaziatrice per iniziare.", #it instructions stress phase
+
+        #"Welcome to Phase 2.\n\n"
+        # "Please answer the following arithmetic questions as accurately as possible.\n\n"
+        # "Your reaction time and accuracy will be measured.\n\n"
+        # "To ensure optimal results, it is important that you perform at a level "
+        # "comparable to your peers (indicated by the red arrow).\n\n"
+        # "Good luck!\n\n"
+        # "Press the space bar to begin."  #eng instructions stress phase
+
     )
 
     # =========================
     # STRESS
     # =========================
-    run_block(win, thisExp, globalClock, stress=True, duration=600)
+    run_block(win, thisExp, globalClock, stress=True, duration=600) #change to change the duration of the stress phase
 
     # =========================
-    # FINE
+    # END
     # =========================
-    show_text(win, "L'esperimento è terminato.\n\nAvvisa lo sperimentatore.")
+    show_text(win, "L'esperimento è terminato.\n\nAvvisa lo sperimentatore." #it end phase notification
+              #“The experiment has ended.\n\nPlease notify the experimenter.” #eng end phase notification
+             )
 
     thisExp.saveAsWideText(thisExp.dataFileName + ".csv")
     thisExp.saveAsPickle(thisExp.dataFileName)
