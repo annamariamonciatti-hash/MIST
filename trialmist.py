@@ -77,9 +77,14 @@ def run_trial(win, equation, stress, usrAvg):
 
     response = None
     rt = None
-    event.clearEvents()  # 👈 QUI
+    event.clearEvents()  
     # ===== LOOP =====
-    while clock.getTime() < max_time:
+    if stress:
+        condition = lambda: clock.getTime() < max_time
+    else:
+        condition = lambda: True
+
+    while condition():
 
         if "escape" in event.getKeys():
             core.quit()
